@@ -20,14 +20,13 @@
 </noscript>
 
 {{{decorator.HEADER}}}
-<div id="dittnav-decorator-modules">
-  <div class="dittnav-podlet-container">
-    {{#each podlets}}
-      <div id="podlet-{{{@key}}}">
-        {{{this}}}
-      </div>
-    {{/each}}
+<div id="dittnav-decorator-modules"></div>
+<div class="dittnav-podlet-container">
+  {{#each podlets}}
+  <div id="podlet-{{{@key}}}">
+    {{{this}}}
   </div>
+  {{/each}}
 </div>
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
