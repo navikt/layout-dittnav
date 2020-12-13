@@ -45,7 +45,6 @@ jobs:
 
   build:
     name: Build and Publish Docker image
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -81,7 +80,6 @@ jobs:
   update-docker-cache:
     name: Update Docker Cache
     needs: [ build ]
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code
@@ -108,7 +106,6 @@ jobs:
   deploy-dev:
     name: Deploy to dev
     needs: [test, build]
-    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - name: Fetch NAIS yaml
