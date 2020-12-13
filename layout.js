@@ -51,8 +51,8 @@ app.set('view engine', 'html');
 app.engine('html', require('hbs').__express);
 app.set("views", path.resolve(__dirname, "./build"));
 
-app.use(`${layout.pathname()}/static`, express.static("build/static"));
-app.use(`/static`, express.static("build/static"));
+app.use(`${layout.pathname()}/static`, express.static("build/static", { index: false }));
+app.use(`/static`, express.static("build/static", { index: false }));
 
 app.get(`${layout.pathname()}/isAlive|isReady`, (req, res) => {
   res.sendStatus(200);
