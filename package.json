@@ -42,5 +42,6 @@
   },
   "prettier": {
     "printWidth": 120
-  }
+  },
+  "homepage": "/person/layout-dittnav"
 }
