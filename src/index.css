@@ -9,8 +9,3 @@ body {
   width: 100%;
   overflow-x: hidden;
 }
-
-.dittnav-podlet-container {
-  display: flex;
-  justify-content: center;
-}

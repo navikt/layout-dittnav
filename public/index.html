@@ -8,10 +8,10 @@
   {{{decorator.STYLES}}}
 
   {{#each podlets}}
-    <!-- {{@key}} -->
-    {{#each this.css}}
-      {{this}}
-    {{/each}}
+  <!-- {{@key}} -->
+  {{#each this.css}}
+  {{this}}
+  {{/each}}
   {{/each}}
 </head>
 <body>
@@ -21,20 +21,18 @@
 
 {{{decorator.HEADER}}}
 <div id="dittnav-decorator-modules"></div>
-<div class="dittnav-podlet-container">
-  {{#each podlets}}
-  <div id="podlet-{{{@key}}}">
-    {{{this}}}
-  </div>
-  {{/each}}
+{{#each podlets}}
+<div id="{{{@key}}}">
+  {{{this}}}
 </div>
+{{/each}}
+
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}
 
 {{#each podlets}}
-  <!-- {{@key}} -->
-  {{#each this.js}}
-    {{this}}
-  {{/each}}
+<!-- {{@key}} -->
+{{#each this.js}}
+{{this}}
 {{/each}}
-</body>
+{{/each}}

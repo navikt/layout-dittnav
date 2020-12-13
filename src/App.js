@@ -4,7 +4,7 @@ import { isProduction } from "./utils";
 
 const App = () => (
   <div className="App">
-    {isProduction ? <EnforceLoginLoader/> : null}
+    Hello layout!
   </div>
 );
 
