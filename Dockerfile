@@ -28,5 +28,7 @@ COPY . /usr/src/app
 EXPOSE 7000
 USER node
 
+COPY --from=builder /usr/src/app/build /usr/src/app/build
+
 CMD ["npm", "run", "layout"]
 
