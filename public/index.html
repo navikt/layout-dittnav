@@ -20,12 +20,11 @@
 </noscript>
 
 {{{decorator.HEADER}}}
+
+{{{podlet "podlet-vta-situasjon" "https://arbeid.dev.nav.no/arbeid/podlet-vta-situasjon/manifest.json"}}}
 <div id="dittnav-decorator-modules"></div>
-{{#each podlets}}
-  <div id="{{{@key}}}">
-    {{{this}}}
-  </div>
-{{/each}}
+{{{podlet "podlet-veientilarbeid" "https://arbeid.dev.nav.no/arbeid/podlet-veientilarbeid/manifest.json"}}}
+{{{podlet "podlet-dittnav-generelle-fliser" "https://person.dev.nav.no/person/podlet-dittnav-generelle-fliser/manifest.json"}}}
 
 {{{decorator.FOOTER}}}
 {{{decorator.SCRIPTS}}}

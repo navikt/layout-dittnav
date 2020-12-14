@@ -1,8 +1,29 @@
 const express = require("express");
 const Layout = require("@podium/layout");
+const Handlebars = require("hbs");
 const path = require("path");
+const fs = require("fs");
 const fetchMiddleware = require("./middleware");
 const { basePath, port, isDevelopmentEnv, urls } = require("./config");
+
+const registeredPodlets = {};
+
+Handlebars.registerHelper("podlet", function (name, podletUrl) {
+  if (!registeredPodlets[name]) {
+    registeredPodlets[name] = true;
+
+    console.log("Registered podlet", name, podletUrl);
+
+    const podlet = layout.client.register({
+      name: name,
+      uri: podletUrl,
+      resolveJs: true,
+      resolveCss: true,
+    });
+    podlets.push(podlet);
+  }
+  return `<div id="${name}"></div>`;
+});
 
 const layout = new Layout({
   name: "layout-dittnav",
@@ -12,6 +33,7 @@ const layout = new Layout({
 });
 
 const podlets = [
+  /*
   layout.client.register({
     name: "podlet-dittnav-personalia",
     uri: urls.dittnavPersonaliaUrl,
@@ -42,13 +64,23 @@ const podlets = [
     resolveJs: true,
     resolveCss: true,
   }),
+*/
 ];
+
+function parseHandlebarsTemplatePodlets() {
+  const file = fs.readFileSync("build/index.html", { encoding: "utf-8" });
+  const template = Handlebars.compile(file);
+  template({});
+  layout.client.refreshManifests().then(() => {
+    console.log("Manifests refreshed");
+  });
+}
 
 const app = express();
 app.use(layout.middleware());
 
-app.set('view engine', 'html');
-app.engine('html', require('hbs').__express);
+app.set("view engine", "html");
+app.engine("html", Handlebars.__express);
 app.set("views", path.resolve(__dirname, "./build"));
 
 app.use(`${layout.pathname()}/static`, express.static("build/static"));
@@ -66,9 +98,7 @@ app.use((error, req, res, next) => {
   res.status(500).send("<html><body><h1>Internal server error</h1></body></html>");
 });
 
-layout.client.refreshManifests().then(() => {
-  console.log("Manifests refreshed");
-});
+parseHandlebarsTemplatePodlets();
 
 console.log(`Starting on port ${port} with basePath ${basePath}`);
 console.log(`http://localhost:${port}${basePath}`);
