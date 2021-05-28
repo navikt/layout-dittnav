@@ -15,7 +15,7 @@
     "jsdom": "16.5.3",
     "less-plugin-npm-import": "2.1.0",
     "lodash.throttle": "4.1.1",
-    "nav-frontend-core": "5.0.11",
+    "nav-frontend-core": "5.1.1",
     "nav-frontend-ikoner-assets": "2.0.10",
     "nav-frontend-spinner": "2.0.16",
     "nav-frontend-spinner-style": "0.2.10",
