@@ -11,7 +11,7 @@
     "axios": "0.21.1",
     "classnames": "2.2.6",
     "express": "4.17.1",
-    "hbs": "4.1.1",
+    "hbs": "4.1.2",
     "jsdom": "16.5.3",
     "less-plugin-npm-import": "2.1.0",
     "lodash.throttle": "4.1.1",
